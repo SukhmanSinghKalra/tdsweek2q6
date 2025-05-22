@@ -6,17 +6,17 @@ import os
 
 app = FastAPI()
 
-# Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins
+    allow_origins=["*"],
     allow_methods=["GET"],
     allow_headers=["*"],
 )
 
-# Load marks from JSON file into a dictionary
-with open(os.path.join(os.path.dirname(__file__), "../q-versel-python .json")) as f:
+json_path = os.path.join(os.path.dirname(__file__), "../q-versel-python.json")
+with open(json_path, "r") as f:
     data = json.load(f)
+
 marks_dict = {entry["name"]: entry["marks"] for entry in data}
 
 @app.get("/api")
