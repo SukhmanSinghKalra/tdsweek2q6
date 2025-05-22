@@ -16,7 +16,7 @@ app.add_middleware(
 marks_dict = {}
 
 try:
-    json_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "q-versel-python.json"))
+    json_path = os.path.join(os.path.dirname(__file__), "q-versel-python.json")
     print(f"Loading JSON from: {json_path}")
     with open(json_path, "r") as f:
         data = json.load(f)
