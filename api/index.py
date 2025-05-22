@@ -17,13 +17,13 @@ marks_dict = {}
 
 try:
     json_path = os.path.join(os.path.dirname(__file__), "q-versel-python.json")
-    print(f"Loading JSON from: {json_path}")
     with open(json_path, "r") as f:
         data = json.load(f)
     marks_dict = {entry["name"]: entry["marks"] for entry in data}
-    print(f"Loaded {len(marks_dict)} records.")
+    print(f"✅ Loaded {len(marks_dict)} students")
+    print(f"🔍 Available names: {list(marks_dict.keys())}") 
 except Exception as e:
-    print(f"❌ Error loading marks file: {e}")
+    print(f"❌ Failed to load JSON: {e}")
 
 @app.get("/api")
 async def get_marks(request: Request):
